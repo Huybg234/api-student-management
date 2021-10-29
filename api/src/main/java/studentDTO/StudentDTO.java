@@ -1,0 +1,28 @@
+package studentDTO;
+
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.FieldDefaults;
+
+import javax.persistence.Entity;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@Data
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@XmlRootElement
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class StudentDTO {
+    Integer id;
+    String fullName;
+    String birthday;
+    String className;
+    String major;
+    String hometown;
+    String gender;
+    double averageMark;
+
+}
