@@ -6,11 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
-import javax.persistence.Entity;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Data
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @XmlRootElement
@@ -24,5 +22,4 @@ public class StudentDTO {
     String hometown;
     String gender;
     double averageMark;
-
 }

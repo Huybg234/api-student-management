@@ -22,6 +22,7 @@ public class StudentDAO {
 
     public List<Student> getStudentByName(String name){
         try (Session session = HibernateUtil.getSessionFactory().openSession()){
+            session.beginTransaction();
             Query<Student> query = session.createQuery("from Student where lower(fullName) like lower(to_char(concat(concat('%', :p_student_name), '%'))) ");
             query.setParameter("p_student_name", name);
             List<Student> students = query.getResultList();
@@ -35,6 +36,7 @@ public class StudentDAO {
 
     public List<Student> getStudentByGender(String gender){
         try (Session session = HibernateUtil.getSessionFactory().openSession()){
+            session.beginTransaction();
             Query<Student> query = session.createQuery("from Student where gender = :p_student_gender");
             query.setParameter("p_student_gender", gender);
             List<Student> students = query.getResultList();
@@ -48,6 +50,7 @@ public class StudentDAO {
 
     public List<Student> getStudentByHometown(String homeTown){
         try (Session session = HibernateUtil.getSessionFactory().openSession()){
+            session.beginTransaction();
             Query<Student> query = session.createQuery("from Student where hometown = :p_student_hometown");
             query.setParameter("p_student_hometown", homeTown);
             List<Student> students = query.getResultList();
@@ -59,8 +62,9 @@ public class StudentDAO {
         return null;
     }
 
-    public List<Student> getStudentByHomeClassName(String className){
+    public List<Student> getStudentByClassName(String className){
         try (Session session = HibernateUtil.getSessionFactory().openSession()){
+            session.beginTransaction();
             Query<Student> query = session.createQuery("from Student where className = :p_student_className");
             query.setParameter("p_student_className", className);
             List<Student> students = query.getResultList();
@@ -74,6 +78,7 @@ public class StudentDAO {
 
     public List<Student> getStudentByMajor(String major){
         try (Session session = HibernateUtil.getSessionFactory().openSession()){
+            session.beginTransaction();
             Query<Student> query = session.createQuery("from Student where major = :p_student_major");
             query.setParameter("p_student_major", major);
             List<Student> students = query.getResultList();
@@ -87,6 +92,7 @@ public class StudentDAO {
 
     public List<Student> getStudentByAverage(double min, double max){
         try (Session session = HibernateUtil.getSessionFactory().openSession()){
+            session.beginTransaction();
             Query<Student> query = session.createQuery("from Student where averageMark between :p_student_markMin and :p_student_markMax");
             query.setParameter("p_student_markMin", min);
             query.setParameter("p_student_markMax", max);

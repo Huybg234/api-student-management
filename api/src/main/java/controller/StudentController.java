@@ -6,7 +6,6 @@ import studentDTO.StudentDTO;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/students")
@@ -18,6 +17,48 @@ public class StudentController {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Student> getListStudent() {
         return studentService.getListStudent();
+    }
+
+    @GET
+    @Path("/name/{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Student> getListStudentByName(@PathParam("name") String name) {
+        return studentService.getListStudentByName(name);
+    }
+
+    @GET
+    @Path("/gender/{gender}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Student> getListStudentByGender(@PathParam("gender") String gender) {
+        return studentService.getListStudentByGender(gender);
+    }
+
+    @GET
+    @Path("/hometown/{hometown}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Student> getListStudentByHometown(@PathParam("hometown") String hometown) {
+        return studentService.getListStudentByHometown(hometown);
+    }
+
+    @GET
+    @Path("/class-name/{className}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Student> getListStudentByClassName(@PathParam("className") String className) {
+        return studentService.getListStudentByClassName(className);
+    }
+
+    @GET
+    @Path("/major/{major}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Student> getListStudentByMajor(@PathParam("major") String major) {
+        return studentService.getListStudentByMajor(major);
+    }
+
+    @GET
+    @Path("/average-mark/{min}/{max}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Student> getListStudentByAverageMark(@PathParam("min") double min, @PathParam("min") double max) {
+        return studentService.getListStudentAverageMark(min, max);
     }
 
     @POST

@@ -21,6 +21,30 @@ public class StudentService {
         return studentDAO.getStudentByBirthday();
     }
 
+    public List<Student> getListStudentByName(String name){
+        return studentDAO.getStudentByName(name);
+    }
+
+    public List<Student> getListStudentByGender(String gender){
+        return studentDAO.getStudentByGender(gender);
+    }
+
+    public List<Student> getListStudentByHometown(String hometown){
+        return studentDAO.getStudentByHometown(hometown);
+    }
+
+    public List<Student> getListStudentByClassName(String className){
+        return studentDAO.getStudentByClassName(className);
+    }
+
+    public List<Student> getListStudentByMajor(String major){
+        return studentDAO.getStudentByMajor(major);
+    }
+
+    public List<Student> getListStudentAverageMark(double min, double max){
+        return studentDAO.getStudentByAverage(min, max);
+    }
+
     public boolean insert(StudentDTO studentDTO) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Student student = new Student();
@@ -40,11 +64,6 @@ public class StudentService {
         }
         if (student.getBirthday() == null){
             return false;
-        }else {
-            Period period = Period.between(LocalDate.ofEpochDay(student.getBirthday().getDate()), LocalDate.now());
-            if(period.getYears() > 100 || period.getYears() < 0){
-                return false;
-            }
         }
         if (student.getClassName() == null || student.getClassName().length() > 50 || student.getClassName().length() < 1){
             return false;
